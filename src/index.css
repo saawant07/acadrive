@@ -18,8 +18,10 @@
     z-index: -20;
     opacity: 0.2;
     filter: grayscale(100%) sepia(80%) contrast(1.2);
-    /* background-image will be set inline or via class if we move it to public */
+    /* Fixed background for that "bolted down" feel */
+    background-image: url('/gothic_bg.png');
     background-size: cover;
+    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     pointer-events: none;
@@ -39,46 +41,38 @@
 
   .blood-drip {
     position: absolute;
-    top: -100px;
+    top: 0;
+    /* Starts from very top */
     width: 2px;
-    background: #e11d48;
-    opacity: 0.6;
-    border-radius: 0 0 4px 4px;
-    animation: dripDown linear infinite;
-    filter: drop-shadow(0 0 2px #e11d48);
+    height: 60vh;
+    /* Long drips */
+    background: linear-gradient(to bottom, #e11d48, transparent);
+    opacity: 0.8;
+    transform-origin: top;
+    animation: bloodRun 15s infinite linear;
+    filter: drop-shadow(0 0 5px #e11d48);
   }
 
   /* Variation in drip widths */
   .blood-drip:nth-child(3n) {
-    width: 3px;
-    opacity: 0.5;
+    width: 4px;
+    animation-duration: 20s;
+    opacity: 0.6;
   }
 
   .blood-drip:nth-child(5n) {
     width: 1px;
-    opacity: 0.8;
+    animation-duration: 12s;
+    opacity: 0.9;
   }
 
-  @keyframes dripDown {
+  @keyframes bloodRun {
     0% {
-      transform: translateY(0);
-      height: 0;
-      opacity: 0;
-    }
-
-    10% {
-      opacity: 0.7;
-    }
-
-    50% {
-      height: 60vh;
-      opacity: 0.7;
+      transform: scaleY(0);
     }
 
     100% {
-      transform: translateY(110vh);
-      height: 10vh;
-      opacity: 0;
+      transform: scaleY(1);
     }
   }
 }
@@ -310,4 +304,27 @@ input[type="text"] {
     filter: drop-shadow(0 0 25px #ff0000);
     transform: scale(1.05);
   }
+}
+
+/* Gothic Page Background */
+body {
+  background-color: #000 !important;
+  background-image: url('/public/gothic-bg.jpg');
+  /* Ensure the image is in public folder */
+  background-attachment: fixed;
+  background-blend-mode: multiply;
+  background-size: cover;
+}
+
+/* The Blood Drips */
+.blood-drip-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10;
+  background: linear-gradient(to bottom, #e11d48 0%, transparent 40%);
+  mask-image: url('https://www.transparenttextures.com/patterns/pinstripe.png');
+  /* Mimics drip lines */
 }
