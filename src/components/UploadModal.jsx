@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Button } from './ui/Button';
 import { Input } from './ui/Input';
 import { supabase } from '../lib/supabase';
+import { getUserId } from '../lib/identity';
 
 export function UploadModal({ isOpen, onClose, onUploadSuccess }) {
     const [loading, setLoading] = useState(false);
@@ -67,7 +68,8 @@ export function UploadModal({ isOpen, onClose, onUploadSuccess }) {
                 semester: parseInt(formData.semester),
                 resource_type: formData.resourceType,
                 file_name: file.name,
-                file_url: publicUrl
+                file_url: publicUrl,
+                owner_id: getUserId()
             });
 
             if (dbError) throw dbError;

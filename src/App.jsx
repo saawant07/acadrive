@@ -6,13 +6,15 @@ import { ResourceCard } from './components/ResourceCard';
 import { ResourceModal } from './components/ResourceModal';
 import { UploadModal } from './components/UploadModal';
 import { supabase } from './lib/supabase';
-import { Loader2, Database } from 'lucide-react';
+import { Loader2, Database, User } from 'lucide-react';
+import { getUserId } from './lib/identity';
 
 function App() {
   const [resources, setResources] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [filters, setFilters] = useState({ type: null, semester: null });
+  const [showMyUploads, setShowMyUploads] = useState(false);
 
   const [viewResource, setViewResource] = useState(null);
   const [isUploadOpen, setIsUploadOpen] = useState(false);
@@ -38,6 +40,10 @@ function App() {
         query = query.eq('semester', filters.semester);
       }
 
+      if (showMyUploads) {
+        query = query.eq('owner_id', getUserId());
+      }
+
       const { data, error } = await query;
 
       if (error) throw error;
@@ -47,7 +53,49 @@ function App() {
     } finally {
       setLoading(false);
     }
-  }, [searchQuery, filters]);
+  }, [searchQuery, filters, showMyUploads]);
+
+  const handleDelete = async (resource) => {
+    if (!window.confirm("Are you sure you want to delete this file?")) return;
+
+    try {
+      // 1. Delete from Storage
+      // We stored the public URL, so we need to extract the path.
+      // However, we made the file path just the filename in UploadModal (line 50).
+      // Let's assume the public URL format allows us to just use the filename, or better, we can just use the file_name if we stored it as the path.
+      // Looking at UploadModal: 
+      // const fileName = `${Date.now()}-${file.name.replace(/[^a-z0-9.]/gi, '_')}`;
+      // const filePath = `${fileName}`;
+      // ... .upload(filePath, file);
+      // ... file_name: file.name (Original name) 
+      // WAIT. We stored the original filename in DB `file_name` column, but the storage path is DIFFERENT. 
+      // We don't have the storage path in the DB row explicitly.
+      // But we have `file_url`. The public URL is `.../pdfs/<filePath>`.
+      // So we can extract the last part of file_url.
+
+      const storagePath = resource.file_url.split('/').pop();
+
+      const { error: storageError } = await supabase.storage
+        .from('pdfs')
+        .remove([storagePath]);
+
+      if (storageError) throw storageError;
+
+      // 2. Delete from DB
+      const { error: dbError } = await supabase
+        .from('resources')
+        .delete()
+        .eq('id', resource.id);
+
+      if (dbError) throw dbError;
+
+      // 3. Update UI
+      setResources(prev => prev.filter(r => r.id !== resource.id));
+    } catch (err) {
+      console.error("Error deleting resource:", err);
+      alert("Failed to delete resource.");
+    }
+  };
 
   // Initial fetch and refetch on filter/search change
   useEffect(() => {
@@ -68,8 +116,21 @@ function App() {
             Share and discover academic resources anonymously. No login required.
           </p>
 
-          <div className="max-w-2xl mx-auto mt-8">
+          <div className="max-w-2xl mx-auto mt-8 flex flex-col gap-4">
             <SearchBar onSearch={setSearchQuery} />
+
+            <div className="flex justify-center">
+              <button
+                onClick={() => setShowMyUploads(!showMyUploads)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${showMyUploads
+                  ? 'bg-blue-100 text-blue-700'
+                  : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'
+                  }`}
+              >
+                <User className="h-4 w-4" />
+                {showMyUploads ? 'Showing My Uploads' : 'My Uploads'}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -89,6 +150,7 @@ function App() {
                 key={res.id}
                 resource={res}
                 onView={setViewResource}
+                onDelete={handleDelete}
               />
             ))}
           </div>

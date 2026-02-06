@@ -1,7 +1,8 @@
-import { Calendar, FileText, Eye } from 'lucide-react';
+import { Calendar, FileText, Eye, Trash2 } from 'lucide-react';
 import { Button } from './ui/Button';
+import { getUserId } from '../lib/identity';
 
-export function ResourceCard({ resource, onView }) {
+export function ResourceCard({ resource, onView, onDelete }) {
     const date = new Intl.DateTimeFormat('en-GB', {
         day: 'numeric',
         month: 'short',
@@ -42,10 +43,20 @@ export function ResourceCard({ resource, onView }) {
                     <Calendar className="h-3 w-3" />
                     {date}
                 </span>
-                <Button size="sm" variant="secondary" onClick={() => onView(resource)}>
-                    <Eye className="h-4 w-4 mr-1" />
-                    View
-                </Button>
+                <div className="flex gap-2">
+                    {resource.owner_id === getUserId() && (
+                        <Button size="sm" variant="destructive" onClick={(e) => {
+                            e.stopPropagation();
+                            onDelete(resource);
+                        }}>
+                            <Trash2 className="h-4 w-4" />
+                        </Button>
+                    )}
+                    <Button size="sm" variant="secondary" onClick={() => onView(resource)}>
+                        <Eye className="h-4 w-4 mr-1" />
+                        View
+                    </Button>
+                </div>
             </div>
         </div>
     );
