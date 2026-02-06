@@ -6,7 +6,7 @@ import { ResourceCard } from './components/ResourceCard';
 import { ResourceModal } from './components/ResourceModal';
 import { UploadModal } from './components/UploadModal';
 import { supabase } from './lib/supabase';
-import { Loader2, Database, User, Upload } from 'lucide-react';
+import { Loader2, Database, User, Upload, Skull } from 'lucide-react';
 import { getUserId } from './lib/identity';
 import { Button } from './components/ui/Button';
 
@@ -154,7 +154,16 @@ function App() {
       <div className="max-w-7xl mx-auto space-y-8 relative z-10">
 
         {/* Header Section */}
-        <div className="text-center space-y-4 py-8 relative">
+        <div className="text-center space-y-4 py-8 relative flex flex-col items-center">
+          <motion.div
+            animate={{ scale: [1, 1.1, 1] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            whileHover={{ rotate: [0, -5, 5, -5, 5, 0], transition: { duration: 0.5 } }}
+            style={{ filter: 'drop-shadow(0 0 20px #e11d48)' }}
+            className="mb-6"
+          >
+            <Skull size={80} className="text-red-600" />
+          </motion.div>
           <h1 className="text-5xl md:text-7xl font-heading font-normal text-white tracking-wide text-balance drop-shadow-[0_0_15px_rgba(225,29,72,0.8)]">
             Built for the <span className="text-red-500 font-bold drop-shadow-[0_0_25px_rgba(220,38,38,0.9)]">Grustle.</span>
             <br className="hidden md:block" />
