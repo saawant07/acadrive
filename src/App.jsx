@@ -125,6 +125,24 @@ function App() {
   return (
     <Layout onUploadClick={() => setIsUploadOpen(true)}>
       {/* Roaming Light */}
+      {/* Gothic Background */}
+      <div className="gothic-bg" style={{ backgroundImage: 'url(/gothic_bg.png)' }} />
+
+      {/* Blood Drips */}
+      <div className="blood-container">
+        {[...Array(12)].map((_, i) => (
+          <div
+            key={i}
+            className="blood-drip"
+            style={{
+              left: `${Math.random() * 100}%`,
+              animationDuration: `${Math.random() * 5 + 5}s`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          />
+        ))}
+      </div>
+
       {/* Spores Layer */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         {[...Array(50)].map((_, i) => (
