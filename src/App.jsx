@@ -164,11 +164,16 @@ function App() {
           >
             <Skull size={80} className="text-red-600" />
           </motion.div>
-          <h1 className="text-5xl md:text-7xl font-heading font-normal text-white tracking-wide text-balance drop-shadow-[0_0_15px_rgba(225,29,72,0.8)]">
+
+          <h1 className="text-6xl md:text-8xl font-heading font-black text-white tracking-widest uppercase drop-shadow-[0_0_25px_#e11d48] mb-4" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
+            Acadrive
+          </h1>
+
+          <h2 className="text-4xl md:text-6xl font-heading font-normal text-white tracking-wide text-balance drop-shadow-[0_0_15px_rgba(225,29,72,0.8)]">
             Built for the <span className="text-red-500 font-bold drop-shadow-[0_0_25px_rgba(220,38,38,0.9)]">Grustle.</span>
             <br className="hidden md:block" />
             <span className="text-red-600 drop-shadow-[0_0_35px_rgba(185,28,28,1)]">Master the Syllabus.</span>
-          </h1>
+          </h2>
           <p className="text-lg text-[#cbd5e1] max-w-2xl mx-auto text-pretty font-medium tracking-wide">
             Share and discover academic resources anonymously. No login required.
           </p>
@@ -180,7 +185,7 @@ function App() {
             </Button>
           </div>
 
-          <div className="max-w-2xl mx-auto mt-12 flex flex-col gap-4">
+          <div className="max-w-4xl mx-auto mt-12 flex flex-col gap-4">
             <SearchBar onSearch={setSearchQuery} />
 
             <div className="flex justify-center">

@@ -121,3 +121,26 @@ body {
   box-shadow: 0 0 15px rgba(225, 29, 72, 0.6);
   border: none;
 }
+
+/* Gothic Titan Branding */
+.brand-title {
+  font-family: 'Grenze Gotisch', serif;
+  font-size: 4rem !important;
+  /* Makes it big and bold */
+  color: #ffffff;
+  text-shadow: 0 0 10px #e11d48, 0 0 20px #e11d48;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: -10px;
+  /* Pulls it closer to the slogan */
+}
+
+/* Fixes the search bar text cutting off */
+.search-input-fixed {
+  width: 100%;
+  max-width: 800px;
+  padding: 1rem 1.5rem;
+  background: rgba(26, 5, 5, 0.9) !important;
+  border: 2px solid #ef4444 !important;
+  color: #f1f5f9 !important;
+}
