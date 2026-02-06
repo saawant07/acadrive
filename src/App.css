@@ -193,3 +193,26 @@ body {
   border-radius: 50%;
   box-shadow: 0 0 10px #ff0000;
 }
+
+/* Gothic Viscous Ooze Style */
+.blood-drip {
+  background: linear-gradient(180deg, #1a0505 0%, #4a0404 100%);
+  border-radius: 0 0 50% 50% / 0 0 15% 15%;
+  /* Organic liquid bottom */
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.9));
+  position: absolute;
+  top: 0;
+  will-change: height;
+}
+
+/* Specular "Wet" Highlight */
+.blood-drip::after {
+  content: '';
+  position: absolute;
+  left: 20%;
+  top: 20%;
+  width: 2px;
+  height: 30%;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+}

@@ -142,49 +142,58 @@ function App() {
         </svg>
       </div>
 
-      {/* Complex Organic Blood Drips */}
+      {/* Complex Organic Blood Drips - Viscous Gothic Ooze */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-50">
-        {[...Array(20)].map((_, i) => {
-          const width = 2 + Math.random() * 6; // 2px to 8px
-          const delay = Math.random() * 15;
-          const duration = 15 + Math.random() * 15; // Slow, viscous
-          const left = (i + 1) * (100 / 21);
+        {[...Array(15)].map((_, i) => {
+          // Randomized widths (3px - 12px)
+          const width = 3 + Math.random() * 9;
+          const isThick = width > 7;
+
+          // Uneven distribution (clustering)
+          // We'll use a mix of random and fixed zones to create clusters
+          let left;
+          if (i < 5) left = 10 + Math.random() * 15; // Cluster left
+          else if (i < 10) left = 70 + Math.random() * 20; // Cluster right
+          else left = Math.random() * 100; // Scattered
+
+          // Animation props
+          const duration = 15 + Math.random() * 30; // 15s - 45s
+          const delay = Math.random() * 20;
+          const finalHeight = 30 + Math.random() * 25; // 30vh - 55vh
 
           return (
             <div key={i} className="absolute top-0 h-full" style={{ left: `${left}%`, width: `${width}px` }}>
-              {/* Main Drip */}
               <motion.div
                 initial={{ height: "0vh" }}
-                animate={{ height: ["0vh", "110vh"] }}
+                animate={{ height: ["0vh", `${finalHeight}vh`] }}
                 transition={{
                   duration: duration,
                   repeat: Infinity,
-                  ease: "linear",
+                  repeatType: "reverse", // Ooze down then retract/dry up
+                  ease: "easeInOut",
                   delay: delay
                 }}
-                className="absolute top-0 w-full rounded-b-full"
+                className="absolute top-0 w-full rounded-b-full relative"
                 style={{
-                  background: 'linear-gradient(to right, #4a0404, #e11d48, #4a0404)', // Cylinder 3D effect
-                  boxShadow: '0 0 10px rgba(225, 29, 72, 0.5)'
+                  background: 'linear-gradient(to bottom, #1a0505, #4a0404)', // Deep Dark Maroon
+                  boxShadow: '0 0 5px rgba(26, 5, 5, 0.8)'
                 }}
               >
-                {/* Specular Highlight (The "Wet" Look) */}
-                <div className="absolute bottom-2 left-[20%] w-[30%] h-[10%] bg-white/60 blur-[1px] rounded-full" />
-              </motion.div>
+                {/* Bulbous Head */}
+                <div
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full bg-[#4a0404]"
+                  style={{
+                    width: '180%', // Wider than stem
+                    height: `${width * 1.5}px`,
+                    boxShadow: '0 2px 4px rgba(0,0,0,0.4)'
+                  }}
+                />
 
-              {/* Secondary Trailing Drip (Follower) */}
-              <motion.div
-                initial={{ height: "0vh", opacity: 0 }}
-                animate={{ height: ["0vh", "110vh"], opacity: [0, 1, 0] }}
-                transition={{
-                  duration: duration * 0.8, // Slightly faster
-                  repeat: Infinity,
-                  ease: "linear",
-                  delay: delay + 5
-                }}
-                className="absolute top-0 w-[60%] left-[20%] rounded-b-full bg-[#e11d48]"
-                style={{ opacity: 0.7 }}
-              />
+                {/* Specular Highlight (The "Wet" Look) - Only on thick drips */}
+                {isThick && (
+                  <div className="absolute bottom-2 left-[20%] w-[2px] h-[15%] bg-white/80 blur-[0.5px] rounded-full z-10" />
+                )}
+              </motion.div>
             </div>
           );
         })}
