@@ -83,3 +83,24 @@ body {
   background-size: 100% 3px, 3px 100%;
   pointer-events: none;
 }
+
+/* This makes things feel spooky without making them disappear */
+.safe-flicker {
+  animation: subtle-pulse 4s infinite ease-in-out;
+}
+
+@keyframes subtle-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    filter: brightness(100%);
+  }
+
+  50% {
+    opacity: 0.85;
+    filter: brightness(120%);
+  }
+
+  /* Just a slight glow change */
+}

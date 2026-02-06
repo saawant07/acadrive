@@ -154,10 +154,10 @@ function App() {
 
         {/* Header Section */}
         <div className="text-center space-y-4 py-8 relative">
-          <h1 className="text-5xl md:text-7xl font-heading font-normal text-red-600 tracking-wide text-balance drop-shadow-[0_0_10px_rgba(225,29,72,0.5)]">
-            Built for the <span className="text-red-500 drop-shadow-[0_0_20px_rgba(190,18,60,0.8)]">Grustle.</span>
+          <h1 className="text-5xl md:text-7xl font-heading font-normal text-white tracking-wide text-balance drop-shadow-[0_0_15px_rgba(225,29,72,0.8)]">
+            Built for the <span className="text-red-500 font-bold drop-shadow-[0_0_25px_rgba(220,38,38,0.9)]">Grustle.</span>
             <br className="hidden md:block" />
-            <span className="text-rose-700 drop-shadow-[0_0_30px_rgba(159,18,57,1)]">Master the Syllabus.</span>
+            <span className="text-red-600 drop-shadow-[0_0_35px_rgba(185,28,28,1)]">Master the Syllabus.</span>
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto text-pretty">
             Share and discover academic resources anonymously. No login required.

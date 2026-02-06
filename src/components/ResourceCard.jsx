@@ -21,7 +21,7 @@ export function ResourceCard({ resource, onView, onDelete, onVote }) {
             exit={{ opacity: 0, scale: 0.95 }}
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="group relative h-full flex flex-col bg-black/40 backdrop-blur-sm border border-red-900/40 rounded-xl p-5 hover:bg-red-950/10 transition-all overflow-hidden min-h-[220px] animate-[pulse_4s_ease-in-out_infinite] hover:animate-none"
+            className="group relative h-full flex flex-col bg-black/40 backdrop-blur-sm border border-red-900/50 rounded-xl p-5 hover:bg-white/5 transition-all overflow-hidden min-h-[220px] animate-[pulse_4s_ease-in-out_infinite] hover:animate-none"
         >
             {/* Inner Glow Hack */}
             <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-red-500/10 pointer-events-none group-hover:animate-flicker" />
@@ -92,7 +92,7 @@ export function ResourceCard({ resource, onView, onDelete, onVote }) {
                                 whileTap={{ scale: 0.95 }}
                                 size="sm"
                                 variant="secondary"
-                                className="h-9 text-xs px-4 rounded-xl shadow-none bg-slate-900 border border-emerald-500/20 hover:bg-emerald-500/10 text-emerald-400"
+                                className="h-9 text-xs px-4 rounded-xl shadow-md bg-slate-800 border border-slate-700 hover:bg-slate-700 text-white"
                                 onClick={() => onView(resource)}
                             >
                                 <Eye className="h-3 w-3 mr-1.5" />
