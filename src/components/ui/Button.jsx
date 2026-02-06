@@ -5,11 +5,11 @@ export function Button({ className, variant = 'primary', size = 'md', ...props }
     const baseStyles = 'inline-flex items-center justify-center rounded-lg font-medium transition-[background-color,color,border-color,box-shadow] duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none';
 
     const variants = {
-        primary: "bg-blue-600 text-white hover:bg-blue-700 shadow-sm hover:shadow active:scale-95",
-        secondary: "bg-slate-800 text-slate-200 hover:bg-slate-700 border border-slate-700",
-        outline: "border border-slate-700 text-slate-300 hover:bg-slate-800",
-        ghost: "text-slate-400 hover:bg-slate-800 hover:text-slate-200",
-        danger: "bg-red-500/10 text-red-400 hover:bg-red-500/20"
+        primary: "bg-blue-600 text-[#cbd5e1] hover:bg-blue-700 shadow-sm hover:shadow active:scale-95",
+        secondary: "bg-slate-800 text-[#cbd5e1] hover:bg-slate-700 border border-slate-700",
+        outline: "border border-slate-700 text-[#cbd5e1] hover:bg-slate-800",
+        ghost: "text-slate-400 hover:bg-slate-800 hover:text-[#cbd5e1]",
+        danger: "bg-red-500/10 text-red-300 hover:bg-red-500/20"
     };
 
     const sizes = {

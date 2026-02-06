@@ -131,20 +131,21 @@ function App() {
           opacity: [0.1, 0.15, 0.1]
         }}
         transition={{
-          duration: 20,
+          duration: 40,
           repeat: Infinity,
           ease: "linear"
         }}
-        className="fixed top-0 left-0 w-[800px] h-[800px] bg-emerald-500/20 rounded-full blur-3xl pointer-events-none -z-10"
+        className="fixed top-0 left-0 w-[800px] h-[800px] bg-emerald-500/10 rounded-full blur-3xl pointer-events-none -z-10"
       />
 
       <div className="max-w-7xl mx-auto space-y-8 relative z-10">
 
         {/* Header Section */}
         <div className="text-center space-y-4 py-8">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight text-balance drop-shadow-[0_0_20px_rgba(16,185,129,0.4)]">
-            Sharing Knowledge, <br className="hidden md:block" />
-            <span className="text-emerald-500">Made Simple.</span>
+          <h1 className="text-4xl md:text-6xl font-heading font-extrabold text-[#cbd5e1] tracking-tighter text-balance">
+            Built for the <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#cbd5e1] to-emerald-500">Grustle.</span>
+            <br className="hidden md:block" />
+            <span className="text-emerald-500 drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">Master the Syllabus.</span>
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto text-pretty">
             Share and discover academic resources anonymously. No login required.

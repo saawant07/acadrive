@@ -21,7 +21,7 @@ export function ResourceCard({ resource, onView, onDelete, onVote }) {
             exit={{ opacity: 0, scale: 0.95 }}
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="group relative h-full flex flex-col bg-[#0a0a0a] border border-emerald-500/20 rounded-2xl p-5 hover:border-emerald-500/50 hover:shadow-[0_0_15px_rgba(16,185,129,0.2)] transition-all overflow-hidden min-h-[200px]"
+            className="group relative h-full flex flex-col bg-white/5 backdrop-blur-3xl border-t border-l border-emerald-500/30 border-b-0 border-r-0 rounded-3xl p-6 hover:bg-white/10 transition-all overflow-hidden min-h-[220px]"
         >
             {/* Inner Glow Hack */}
             <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5 pointer-events-none" />

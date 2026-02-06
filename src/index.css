@@ -3,11 +3,16 @@
 
 @layer base {
   body {
-    @apply bg-black text-slate-50 antialiased font-sans overflow-x-hidden;
+    @apply bg-[#050505] text-[#cbd5e1] antialiased font-sans overflow-x-hidden;
   }
 }
 
 .font-heading {
+  font-family: 'Syne', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-display {
   font-family: 'Space Grotesk', sans-serif;
 }
 
