@@ -125,8 +125,7 @@ function App() {
   return (
     <Layout onUploadClick={() => setIsUploadOpen(true)}>
       {/* Roaming Light */}
-      {/* Gothic Background */}
-      <div className="gothic-bg" style={{ backgroundImage: 'url(/gothic_bg.png)' }} />
+      {/* Gothic Background - Handled in index.css body */}
 
       {/* Blood Drips */}
       <div className="blood-container">

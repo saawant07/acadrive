@@ -308,23 +308,29 @@ input[type="text"] {
 
 /* Gothic Page Background */
 body {
-  background-color: #000 !important;
-  background-image: url('/public/gothic-bg.jpg');
-  /* Ensure the image is in public folder */
+  background-color: #050505 !important;
+  background-image: url('/gothic_bg.png');
+  /* Corrected path */
   background-attachment: fixed;
-  background-blend-mode: multiply;
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Blend with the dark background color for that "dark mode" feel */
+  background-blend-mode: overlay;
 }
 
 /* The Blood Drips */
 .blood-drip-container {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
   pointer-events: none;
-  z-index: 10;
-  background: linear-gradient(to bottom, #e11d48 0%, transparent 40%);
-  mask-image: url('https://www.transparenttextures.com/patterns/pinstripe.png');
-  /* Mimics drip lines */
+  z-index: 0;
+  /* Above body bg, below content */
+  /* We will use the React loop for individual drips, 
+     but this container captures the user's manual class attempt if needed, 
+     though we use .blood-container in App.jsx usually. 
+     Let's map .blood-container to this or vice versa. */
 }
