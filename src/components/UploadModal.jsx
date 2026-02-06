@@ -50,7 +50,7 @@ export function UploadModal({ isOpen, onClose, onUploadSuccess }) {
 
             const { data: existingFile, error: checkError } = await supabase
                 .from('resources')
-                .select('id')
+                .select('subject_name')
                 .eq('file_hash', fileHash)
                 .single();
 
@@ -59,7 +59,7 @@ export function UploadModal({ isOpen, onClose, onUploadSuccess }) {
             }
 
             if (existingFile) {
-                setError('This exact file already exists.');
+                setError(`Duplicate found! This exact content was already uploaded with the name: ${existingFile.subject_name}`);
                 setLoading(false);
                 return;
             }
