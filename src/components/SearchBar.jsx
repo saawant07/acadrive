@@ -1,0 +1,30 @@
+import { Search } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Input } from './ui/Input';
+
+export function SearchBar({ onSearch, className }) {
+    const [value, setValue] = useState('');
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            onSearch(value);
+        }, 300); // 300ms debounce
+
+        return () => clearTimeout(timer);
+    }, [value, onSearch]);
+
+    return (
+        <div className={`relative ${className}`}>
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
+            <Input
+                type="text"
+                name="search"
+                autoComplete="off"
+                placeholder="Search for subjects, codes, or file names…"
+                className="pl-10 h-12 text-lg rounded-full shadow-sm border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+            />
+        </div>
+    );
+}
