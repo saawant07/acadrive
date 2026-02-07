@@ -64,6 +64,7 @@ const CustomCursor = () => {
                     y: trailY,
                     translateX: '-50%',
                     translateY: '-50%',
+                    opacity: isVisible ? 1 : 0
                 }}
             >
                 <div
@@ -72,58 +73,6 @@ const CustomCursor = () => {
                         boxShadow: '0 0 8px 1px rgba(220, 38, 38, 0.6)'
                     }}
                 />
-            </motion.div>
-
-            {/* 1. Global Cursor Icon (Dagger) */}
-            <motion.div
-                className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
-                style={{
-                    x: mouseX,
-                    y: mouseY,
-                    // We don't center the dagger tip perfectly; we want the top-left to be the hot spot usually, 
-                    // but for a dagger, the tip is the point. Let's adjust translateX/Y to align the tip.
-                    // Assuming the SVG is drawn with tip at top-left (0,0).
-                    translateX: '-10%',
-                    translateY: '-10%',
-                }}
-                animate={{
-                    scale: isHovering ? 1.5 : 1,
-                    rotate: isHovering ? -15 : 0, // Slight tilt on hover for "Grasping" feel
-                    opacity: isVisible ? 1 : 0, // Hide until moved
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-                {/* Sharp SVG Dagger Icon */}
-                <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    {/* Blade */}
-                    <path
-                        d="M12 2L14 8C14 8 15 11 15 13C15 15 14 17 12 19C10 17 9 15 9 13C9 11 10 8 10 8L12 2Z"
-                        fill="#e11d48"
-                        stroke="#1a0505"
-                        strokeWidth="0.5"
-                    />
-                    {/* Handle/Crossguard */}
-                    <path
-                        d="M8 8L16 8"
-                        stroke="#e11d48"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                    />
-                    <path
-                        d="M12 19L12 22"
-                        stroke="#e11d48"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                    />
-                    {/* Subtle Glow */}
-                    <circle cx="12" cy="12" r="6" stroke="rgba(225, 29, 72, 0.5)" strokeWidth="0" fill="rgba(225, 29, 72, 0.2)" className={isHovering ? 'animate-pulse' : ''} />
-                </svg>
             </motion.div>
         </>
     );

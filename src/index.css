@@ -10,8 +10,8 @@
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     overflow-x: hidden;
     position: relative;
-    cursor: none;
-    /* Hide default cursor */
+    cursor: url('/cursor.svg') 16 2, auto;
+    /* Native High-Performance Cursor */
   }
 
   /* Ensure cursor is visible on touch devices if they have a mouse connected? 
@@ -20,11 +20,21 @@
      We can safeguard it for touch devices in CustomCursor component logic (which we did),
      but CSS might still hide it. 
      Let's use a media query to only hide on fine pointer devices. */
+  /* Interactive Elements */
+  a,
+  button,
+  input,
+  select,
+  option,
+  label,
+  .cursor-hover-target,
+  [role="button"] {
+    cursor: url('/cursor-hover.svg') 16 2, pointer;
+  }
+
+  /* Force these styles on fine pointer devices */
   @media (pointer: fine) {
-    * {
-      cursor: none !important;
-      /* Force hide everywhere */
-    }
+    /* We don't want to force 'none' anymore. */
   }
 
   /* Vignette Overlay */
@@ -205,27 +215,36 @@
   }
 
   /* Stable Search Bar */
-  /* Scoped Search Bar Style (Safe) */
-  .search-input-global {
-    background-color: #1a0a0a !important;
-    border: 2px solid #e11d48 !important;
-    color: #f8fafc !important;
-    opacity: 1 !important;
+  /* Native High-Performance Cursor */
+  body {
+    /* Hotspot at 16 16 (center) for the dagger? Or 16 2 (tip)? 
+       The SVG path M16 2... suggests the tip is at (16, 2). 
+       Let's set hotspot to 16 2. */
+    cursor: url('/cursor.svg') 16 2, auto;
   }
 
-  /* Stable Subheading */
-  .subheading-text {
-    color: #e2e8f0 !important;
-    opacity: 1 !important;
-    visibility: visible !important;
+  /* Interactive Elements */
+  a,
+  button,
+  input,
+  select,
+  option,
+  label,
+  .cursor-hover-target,
+  [role="button"] {
+    cursor: url('/cursor-hover.svg') 16 2, pointer;
   }
 
-  /* FORCE ZERO FLICKER NATIONWIDE */
-  * {
-    animation: none !important;
-    transition: transform 0.2s ease, background-color 0.2s ease !important;
-    /* Only smooth movement, no opacity blinks */
+  /* Force these styles on fine pointer devices */
+  @media (pointer: fine) {
+    * {
+      /* We don't want to force 'none' anymore. We want the custom URL.
+         However, sticking 'cursor: url...' on * is heavy and might break specificity.
+         Let's trust the body inheritance and specific tags. */
+    }
   }
+
+  /* Clean up old overrides if any */
 
   /* Center the Hero Content */
   .hero-container {
