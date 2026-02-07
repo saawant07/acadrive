@@ -240,7 +240,7 @@ function App() {
             </h1>
           </div>
 
-          <h2 className="text-2xl md:text-6xl font-heading font-normal text-slate-100 tracking-wide text-balance drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] px-4 max-w-[80%] md:max-w-4xl mx-auto">
+          <h2 key="slogan-final" className="text-2xl md:text-6xl font-heading font-normal text-slate-100 tracking-wide text-balance drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] px-4 max-w-[80%] md:max-w-4xl mx-auto">
             Exhume the Syllabus. <br className="hidden md:block" />
             <span className="text-slate-200 drop-shadow-[0_0_25px_rgba(220,38,38,0.9)]">Study the Souls of the Passed.</span>
           </h2>
