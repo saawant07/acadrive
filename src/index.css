@@ -480,3 +480,20 @@ body {
 }
 
 /* Clean end of file */
+
+@keyframes swing {
+
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+.animate-swing {
+  animation: swing 4s ease-in-out infinite;
+  transform-origin: top center;
+}
