@@ -228,19 +228,20 @@ function App() {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             whileHover={{ rotate: [0, -5, 5, -5, 5, 0], transition: { duration: 0.5 } }}
             style={{ filter: 'drop-shadow(0 0 20px #e11d48)' }}
-            className="mb-12 cursor-hover-target" // Added mb-12 and cursor target
+            className="mb-12 cursor-hover-target"
           >
-            <Skull size={80} className="text-red-600" />
+            <Skull className="w-12 h-12 md:w-24 md:h-24 text-red-600" />
           </motion.div>
 
-          <h1 className="text-7xl md:text-9xl font-heading font-black text-white tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-4" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
+          <h1 className="text-4xl md:text-9xl font-heading font-black text-white tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-4" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
             Skulldrive
           </h1>
 
 
-          <p className="text-xl md:text-2xl italic font-light text-slate-200 drop-shadow-[0_0_8px_rgba(225,29,72,0.8)]">
-            Exhume the Syllabus. Study the Souls of the Passed.
-          </p>
+          <h2 className="text-2xl md:text-6xl font-heading font-normal text-slate-100 tracking-wide text-balance drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] px-4">
+            Exhume the Syllabus. <br className="hidden md:block" />
+            <span className="text-slate-200 drop-shadow-[0_0_25px_rgba(220,38,38,0.9)]">Study the Souls of the Passed.</span>
+          </h2>
 
           <div className="mt-8 flex justify-center">
             <Button onClick={() => setIsUploadOpen(true)} className="px-10 py-5 text-xl font-bold bg-red-950/40 backdrop-blur-md border-2 border-[#ff0000] shadow-[0_0_20px_rgba(255,0,0,0.6)] hover:bg-[#e11d48] hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 text-white rounded-xl group relative overflow-hidden">

@@ -14,6 +14,10 @@
     /* Native High-Performance Cursor */
   }
 
+  html {
+    overflow-x: hidden;
+  }
+
   /* Ensure cursor is visible on touch devices if they have a mouse connected? 
      Actually, usually we just want to hide it on desktop. 
      But 'cursor: none' is standard for custom cursors. 
