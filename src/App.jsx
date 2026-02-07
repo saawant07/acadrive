@@ -12,6 +12,7 @@ import { Button } from './components/ui/Button';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import CustomCursor from './components/CustomCursor';
+import GothicSkull from './components/GothicSkull';
 
 function App() {
   const [resources, setResources] = useState([]);
@@ -226,11 +227,10 @@ function App() {
           <motion.div
             animate={{ scale: [1, 1.1, 1] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            whileHover={{ rotate: [0, -5, 5, -5, 5, 0], transition: { duration: 0.5 } }}
-            style={{ filter: 'drop-shadow(0 0 20px #e11d48)' }}
-            className="mb-12 cursor-hover-target"
+            whileHover={{ scale: 1.1, transition: { duration: 0.5 } }}
+            className="mb-8 cursor-hover-target w-32 h-32 md:w-48 md:h-48 relative"
           >
-            <Skull className="w-12 h-12 md:w-24 md:h-24 text-red-600" />
+            <GothicSkull className="w-full h-full" />
           </motion.div>
 
           {/* Fluid Header Scaling & Truncation Fix */}
