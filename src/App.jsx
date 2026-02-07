@@ -237,13 +237,8 @@ function App() {
             Skulldrive
           </h1>
 
-          <h2 className="text-4xl md:text-6xl font-heading font-normal text-white tracking-wide text-balance drop-shadow-[0_0_15px_rgba(225,29,72,0.8)]">
-            Built for the <span className="text-red-500 font-bold drop-shadow-[0_0_25px_rgba(220,38,38,0.9)]">Grustle.</span>
-            <br className="hidden md:block" />
-            <span className="text-red-600 drop-shadow-[0_0_35px_rgba(185,28,28,1)]">Master the Syllabus.</span>
-          </h2>
-          <p className="text-lg text-[#cbd5e1] max-w-2xl mx-auto text-pretty font-medium tracking-wide">
-            Share and discover academic resources anonymously. No login required.
+          <p className="text-xl md:text-2xl italic font-light text-slate-200 drop-shadow-[0_0_8px_rgba(225,29,72,0.8)]">
+            Exhume the Syllabus. Study the Souls of the Passed.
           </p>
 
           <div className="mt-8 flex justify-center">
