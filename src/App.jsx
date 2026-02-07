@@ -136,73 +136,69 @@ function App() {
 
       <div className="max-w-7xl mx-auto space-y-8 relative z-10">
 
-        {/* Header Section / Hero */}
-        <div className="relative w-full min-h-[800px] overflow-hidden flex flex-col items-center justify-center text-center space-y-8">
-
-          {/* Gothic Elements */}
+        {/* Gothic Elements - Framing the page content */}
+        <div className="absolute inset-0 pointer-events-none">
           <ArcaneRunes />
           <HangingChains />
+          <div className="absolute left-[2%] h-[150%] w-[1px] bg-gradient-to-b from-transparent via-red-900 to-transparent opacity-30 z-0" />
+          <div className="absolute right-[2%] h-[150%] w-[1px] bg-gradient-to-b from-transparent via-red-900 to-transparent opacity-30 z-0" />
+        </div>
 
-          {/* Crimson Threads */}
-          <div className="absolute left-[10%] h-full w-[1px] bg-gradient-to-b from-transparent via-red-900 to-transparent opacity-30 pointer-events-none z-0" />
-          <div className="absolute right-[10%] h-full w-[1px] bg-gradient-to-b from-transparent via-red-900 to-transparent opacity-30 pointer-events-none z-0" />
+        {/* Global Vignette (Fixed) */}
+        <div className="fixed inset-0 pointer-events-none z-10 bg-gradient-to-r from-black/80 via-transparent to-black/80" />
 
-          {/* Vignette Overlay */}
-          <div className="absolute inset-0 pointer-events-none z-10 bg-gradient-to-r from-black/80 via-transparent to-black/80" />
+        {/* Global Blood Rain (Fixed) */}
+        <BloodRain className="opacity-80" />
 
-          {/* Blood Rain Background - Restricted to this container */}
-          <BloodRain className="opacity-80" />
+        {/* Header Section / Hero - Open Layout */}
+        <div className="flex flex-col items-center justify-center text-center space-y-8 py-20 relative z-20">
+          <motion.img
+            src="/skull.png"
+            alt="Cursed Skull"
+            className="mb-8 w-56 md:w-80 object-contain drop-shadow-[0_0_30px_rgba(185,28,28,0.8)] relative z-10"
+            animate={{
+              y: [0, -20, 0]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
 
-          {/* Wrapper for content to ensure z-index above rain */}
-          <div className="relative z-30 flex flex-col items-center w-full max-w-4xl px-4">
-            <motion.img
-              src="/skull.png"
-              alt="Cursed Skull"
-              className="mb-8 w-56 md:w-80 object-contain drop-shadow-[0_0_30px_rgba(185,28,28,0.8)]"
-              animate={{
-                y: [0, -20, 0]
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
+          {/* Fluid Header Scaling & Truncation Fix */}
+          <div className="w-full max-w-full overflow-hidden px-2 relative z-10">
+            <h1 className="text-[clamp(2.5rem,10vw,5rem)] font-heading font-black text-white tracking-tighter md:tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-4 whitespace-nowrap overflow-wrap-anywhere" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
+              Skulldrive
+            </h1>
+          </div>
 
-            {/* Fluid Header Scaling & Truncation Fix */}
-            <div className="w-full max-w-full overflow-hidden px-2">
-              <h1 className="text-[clamp(2.5rem,10vw,5rem)] font-heading font-black text-white tracking-tighter md:tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-4 whitespace-nowrap overflow-wrap-anywhere" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
-                Skulldrive
-              </h1>
-            </div>
+          <h2 key="slogan-final" className="demonic-slogan text-2xl md:text-6xl font-heading font-normal tracking-wide text-balance px-4 max-w-[80%] md:max-w-4xl mx-auto relative z-10">
+            Exhume the Syllabus. <br className="hidden md:block" />
+            <span className="">Study the Souls of the Passed.</span>
+          </h2>
 
-            <h2 key="slogan-final" className="demonic-slogan text-2xl md:text-6xl font-heading font-normal tracking-wide text-balance px-4 max-w-[80%] md:max-w-4xl mx-auto">
-              Exhume the Syllabus. <br className="hidden md:block" />
-              <span className="">Study the Souls of the Passed.</span>
-            </h2>
+          <div className="mt-8 flex justify-center relative z-50">
+            <Button onClick={() => setIsUploadOpen(true)} className="px-10 py-5 text-xl font-bold bg-red-950/40 backdrop-blur-md border-2 border-[#ff0000] shadow-[0_0_20px_rgba(255,0,0,0.6)] hover:bg-[#e11d48] hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 text-white rounded-xl group relative overflow-hidden">
+              <Upload className="mr-3 h-6 w-6 text-white group-hover:scale-110 transition-transform" />
+              Upload Resource
+            </Button>
+          </div>
 
-            <div className="mt-8 flex justify-center">
-              <Button onClick={() => setIsUploadOpen(true)} className="px-10 py-5 text-xl font-bold bg-red-950/40 backdrop-blur-md border-2 border-[#ff0000] shadow-[0_0_20px_rgba(255,0,0,0.6)] hover:bg-[#e11d48] hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 text-white rounded-xl group relative overflow-hidden">
-                <Upload className="mr-3 h-6 w-6 text-white group-hover:scale-110 transition-transform" />
-                Upload Resource
-              </Button>
-            </div>
+          <div className="max-w-4xl w-full mx-auto mt-12 flex flex-col gap-4 relative z-20">
+            <SearchBar onSearch={setSearchQuery} />
 
-            <div className="max-w-4xl w-full mx-auto mt-12 flex flex-col gap-4">
-              <SearchBar onSearch={setSearchQuery} />
-
-              <div className="flex justify-center">
-                <button
-                  onClick={() => setShowMyUploads(!showMyUploads)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${showMyUploads
-                    ? 'bg-blue-100 text-blue-700'
-                    : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'
-                    }`}
-                >
-                  <User className="h-4 w-4" />
-                  {showMyUploads ? 'Showing My Uploads' : 'My Uploads'}
-                </button>
-              </div>
+            <div className="flex justify-center">
+              <button
+                onClick={() => setShowMyUploads(!showMyUploads)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${showMyUploads
+                  ? 'bg-blue-100 text-blue-700'
+                  : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'
+                  }`}
+              >
+                <User className="h-4 w-4" />
+                {showMyUploads ? 'Showing My Uploads' : 'My Uploads'}
+              </button>
             </div>
           </div>
         </div>

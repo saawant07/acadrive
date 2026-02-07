@@ -4,7 +4,7 @@ export function BloodRain({ className = "" }) {
     return (
         <>
             {/* Cluster Heavy Central Drips (Slow Permanent Ooze) */}
-            <div className={`absolute top-0 left-0 w-full h-full pointer-events-none z-0 ${className}`}>
+            <div className={`fixed top-0 left-0 w-full h-full pointer-events-none z-0 ${className}`}>
                 {/* Define Drip Positions: Central Cluster + Sparse Edges */}
                 {[
                     // Outer Edges (Sparse)
