@@ -6,7 +6,7 @@ import { ResourceCard } from './components/ResourceCard';
 import { ResourceModal } from './components/ResourceModal';
 import { UploadModal } from './components/UploadModal';
 import { supabase } from './lib/supabase';
-import { Loader2, Database, User, Upload, Skull, HelpCircle } from 'lucide-react';
+import { Database, User, Upload, HelpCircle } from 'lucide-react';
 import { getUserId } from './lib/identity';
 import { Button } from './components/ui/Button';
 
