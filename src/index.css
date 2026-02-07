@@ -394,4 +394,19 @@ label {
   margin-bottom: 4px;
 }
 
+/* Prevents the 'Expanded' feel on mobile */
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Force-scaling for the big title */
+.titan-header {
+  font-size: clamp(2rem, 8vw, 5rem);
+  /* Naturally shrinks on smaller screens */
+  word-wrap: break-word;
+}
+
 /* Clean end of file */
