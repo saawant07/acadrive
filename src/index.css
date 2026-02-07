@@ -10,6 +10,21 @@
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     overflow-x: hidden;
     position: relative;
+    cursor: none;
+    /* Hide default cursor */
+  }
+
+  /* Ensure cursor is visible on touch devices if they have a mouse connected? 
+     Actually, usually we just want to hide it on desktop. 
+     But 'cursor: none' is standard for custom cursors. 
+     We can safeguard it for touch devices in CustomCursor component logic (which we did),
+     but CSS might still hide it. 
+     Let's use a media query to only hide on fine pointer devices. */
+  @media (pointer: fine) {
+    * {
+      cursor: none !important;
+      /* Force hide everywhere */
+    }
   }
 
   /* Vignette Overlay */

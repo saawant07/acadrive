@@ -11,6 +11,7 @@ import { getUserId } from './lib/identity';
 import { Button } from './components/ui/Button';
 
 import { AnimatePresence, motion } from 'framer-motion';
+import CustomCursor from './components/CustomCursor';
 
 function App() {
   const [resources, setResources] = useState([]);
@@ -124,6 +125,7 @@ function App() {
 
   return (
     <Layout onUploadClick={() => setIsUploadOpen(true)}>
+      <CustomCursor />
       {/* Roaming Light */}
       {/* Gothic Background */}
       <div className="gothic-bg" />
@@ -226,7 +228,7 @@ function App() {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             whileHover={{ rotate: [0, -5, 5, -5, 5, 0], transition: { duration: 0.5 } }}
             style={{ filter: 'drop-shadow(0 0 20px #e11d48)' }}
-            className="mb-12" // Added mb-12
+            className="mb-12 cursor-hover-target" // Added mb-12 and cursor target
           >
             <Skull size={80} className="text-red-600" />
           </motion.div>
