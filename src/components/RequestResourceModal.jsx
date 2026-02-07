@@ -7,20 +7,46 @@ export function RequestResourceModal({ isOpen, onClose }) {
     const [subjectName, setSubjectName] = useState('');
     const [moduleTopic, setModuleTopic] = useState('');
     const [urgency, setUrgency] = useState('Medium');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [error, setError] = useState(null);
     const [showSuccess, setShowSuccess] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Simulate success
-        setShowSuccess(true);
-        setTimeout(() => {
-            setShowSuccess(false);
-            onClose();
-            // Reset form
-            setSubjectName('');
-            setModuleTopic('');
-            setUrgency('Medium');
-        }, 2500);
+        setIsSubmitting(true);
+        setError(null);
+
+        try {
+            const response = await fetch("https://formspree.io/f/xnjbqbzv", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    subjectName,
+                    moduleTopic,
+                    urgency
+                }),
+            });
+
+            if (response.ok) {
+                setShowSuccess(true);
+                setTimeout(() => {
+                    setShowSuccess(false);
+                    onClose();
+                    // Reset form
+                    setSubjectName('');
+                    setModuleTopic('');
+                    setUrgency('Medium');
+                }, 2000);
+            } else {
+                setError("The spirits are silent. Please try again.");
+            }
+        } catch (err) {
+            setError("The spirits are silent. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     if (!isOpen) return null;
@@ -107,13 +133,25 @@ export function RequestResourceModal({ isOpen, onClose }) {
                                 </select>
                             </div>
 
+                            {/* Error Message */}
+                            {error && (
+                                <p className="text-red-500 text-sm text-center">{error}</p>
+                            )}
+
                             {/* Submit Button */}
                             <Button
                                 type="submit"
-                                className="w-full px-6 py-4 text-lg font-bold bg-red-900/60 hover:bg-red-800 border border-red-700 text-white rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(127,29,29,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.5)]"
+                                disabled={isSubmitting}
+                                className="w-full px-6 py-4 text-lg font-bold bg-red-900/60 hover:bg-red-800 border border-red-700 text-white rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(127,29,29,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.5)] disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                <Send className="h-5 w-5" />
-                                Send Request
+                                {isSubmitting ? (
+                                    <>Summoning...</>
+                                ) : (
+                                    <>
+                                        <Send className="h-5 w-5" />
+                                        Send Request
+                                    </>
+                                )}
                             </Button>
                         </form>
 
