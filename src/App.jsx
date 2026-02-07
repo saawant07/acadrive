@@ -11,7 +11,6 @@ import { getUserId } from './lib/identity';
 import { Button } from './components/ui/Button';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import CustomCursor from './components/CustomCursor';
 import { BloodRain } from './components/BloodRain';
 import { RequestResourceModal } from './components/RequestResourceModal';
 
@@ -128,7 +127,6 @@ function App() {
 
   return (
     <Layout onUploadClick={() => setIsUploadOpen(true)}>
-      <CustomCursor />
       {/* Roaming Light */}
       {/* Gothic Background */}
       <div className="gothic-bg" />

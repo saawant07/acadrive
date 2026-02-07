@@ -10,20 +10,16 @@
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     overflow-x: hidden;
     position: relative;
-    cursor: none;
+
+    /* DEFAULT STATE - Open Skeleton Hand (Red Stroke) */
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="%23ef4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 14V2"/><path d="M9 18.12 10 14V4.66a2 2 0 0 1 3.27-1.46l.73.4"/><path d="M20 6V4"/><path d="M7 22A5 5 0 0 1 2 17v-3"/><path d="M4 14v3"/><path d="M14 6v8"/></svg>') 16 16, auto;
   }
 
   html {
     overflow-x: hidden;
   }
 
-  /* Ensure cursor is visible on touch devices if they have a mouse connected? 
-     Actually, usually we just want to hide it on desktop. 
-     But 'cursor: none' is standard for custom cursors. 
-     We can safeguard it for touch devices in CustomCursor component logic (which we did),
-     but CSS might still hide it. 
-     Let's use a media query to only hide on fine pointer devices. */
-  /* Interactive Elements */
+  /* HOVER STATE - Pointing Skeleton Finger */
   a,
   button,
   input,
@@ -32,12 +28,7 @@
   label,
   .cursor-hover-target,
   [role="button"] {
-    cursor: url('/cursor-hover.svg') 16 2, pointer;
-  }
-
-  /* Force these styles on fine pointer devices */
-  @media (pointer: fine) {
-    /* We don't want to force 'none' anymore. */
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="%23ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4.1 12 6"/><path d="m5.1 8-2.9-.8"/><path d="m6 10-1.9 2.6"/><path d="M11 2a3 3 0 0 0-3 3v7"/><path d="M14 2c1.7 0 3 1.3 3 3v7a3 0 0 1-3 3v3a3 0 0 1-3 3h-3v-3"/><path d="M22 22v-3a3 0 0 0-3-3h-3"/></svg>') 16 2, pointer;
   }
 
   /* Vignette Overlay */
