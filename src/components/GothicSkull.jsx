@@ -14,8 +14,8 @@ const ProceduralSkull = (props) => {
 
     const boneMaterial = {
         color: "#4a0404", // Dark Crimson / Dried Blood
-        roughness: 0.1,   // Wet/Polished look
-        metalness: 0.5,   // Obsidian-like
+        roughness: 0.2,   // Wet/Polished look
+        metalness: 0.7,   // Obsidian-like
     };
 
     return (
@@ -38,7 +38,7 @@ const ProceduralSkull = (props) => {
                     <sphereGeometry args={[0.35, 16, 16]} />
                     <meshStandardMaterial color="black" roughness={1} />
                     {/* Inner Demonic Glow */}
-                    <pointLight color="#ff0000" intensity={5} distance={2} decay={2} />
+                    <pointLight color="#ff0000" intensity={15} distance={5} decay={2} />
                 </mesh>
 
                 {/* Right Eye */}
@@ -46,7 +46,7 @@ const ProceduralSkull = (props) => {
                     <sphereGeometry args={[0.35, 16, 16]} />
                     <meshStandardMaterial color="black" roughness={1} />
                     {/* Inner Demonic Glow */}
-                    <pointLight color="#ff0000" intensity={5} distance={2} decay={2} />
+                    <pointLight color="#ff0000" intensity={15} distance={5} decay={2} />
                 </mesh>
             </group>
         </group>
@@ -60,7 +60,8 @@ const GothicSkull = ({ className = "w-full h-full" }) => {
                 <PerspectiveCamera makeDefault position={[0, 0, 6]} fov={45} />
 
                 {/* Scene Lighting */}
-                <ambientLight intensity={0.2} />
+                <ambientLight intensity={2.5} />
+                <directionalLight position={[10, 10, 10]} intensity={2} />
 
                 {/* Overhead Highlight */}
                 <spotLight
