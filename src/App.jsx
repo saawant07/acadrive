@@ -146,8 +146,7 @@ function App() {
           <div className="absolute right-[2%] h-[150%] w-[1px] bg-gradient-to-b from-transparent via-red-900 to-transparent opacity-30 z-0" />
         </div>
 
-        {/* Global Vignette (Fixed) */}
-        <div className="fixed inset-0 pointer-events-none z-10 bg-gradient-to-r from-black/80 via-transparent to-black/80" />
+
 
         {/* Global Blood Rain (Fixed) */}
         <BloodRain className="opacity-80" />
@@ -185,14 +184,14 @@ function App() {
               <Upload className="mr-3 h-6 w-6 text-white group-hover:scale-110 transition-transform" />
               Upload Resource
             </Button>
-            {/* Dark Twin Button - Request Resource */}
-            <button
+            {/* Request Resource - Matching Upload Style */}
+            <Button
               onClick={() => setIsRequestOpen(true)}
-              className="px-10 py-5 text-xl font-bold bg-black/80 backdrop-blur-md border-2 border-red-700 shadow-[0_0_15px_rgba(127,29,29,0.4)] text-red-500 rounded-xl hover:bg-red-950 hover:text-white hover:shadow-[0_0_30px_rgba(220,38,38,0.5)] hover:scale-105 transition-all duration-300 flex items-center gap-3"
+              className="px-10 py-5 text-xl font-bold bg-black/90 backdrop-blur-md border border-red-600 shadow-[0_0_20px_rgba(255,0,0,0.4)] text-red-500 rounded-xl hover:bg-[#e11d48] hover:text-white hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 group relative overflow-hidden"
             >
-              <HelpCircle className="h-6 w-6" />
+              <HelpCircle className="mr-3 h-6 w-6 group-hover:scale-110 transition-transform" />
               Request Resource
-            </button>
+            </Button>
           </div>
 
           <div className="max-w-4xl w-full mx-auto mt-12 flex flex-col gap-4 relative z-20">
