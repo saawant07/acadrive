@@ -66,7 +66,7 @@ export function BloodRain({ className = "" }) {
 
             {/* Spores Layer */}
             <div className={`absolute inset-0 pointer-events-none z-0 overflow-hidden ${className}`}>
-                {[...Array(50)].map((_, i) => (
+                {[...Array(20)].map((_, i) => (
                     <motion.div
                         key={i}
                         initial={{

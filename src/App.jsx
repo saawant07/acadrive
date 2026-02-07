@@ -13,7 +13,6 @@ import { Button } from './components/ui/Button';
 import { AnimatePresence, motion } from 'framer-motion';
 import CustomCursor from './components/CustomCursor';
 import { BloodRain } from './components/BloodRain';
-import { ArcaneRunes } from './components/ArcaneRunes';
 import { HangingChains } from './components/HangingChains';
 import { RequestResourceModal } from './components/RequestResourceModal';
 
@@ -140,7 +139,6 @@ function App() {
 
         {/* Gothic Elements - Framing the page content */}
         <div className="absolute inset-0 pointer-events-none">
-          <ArcaneRunes />
           <HangingChains />
           <div className="absolute left-[2%] h-[150%] w-[1px] bg-gradient-to-b from-transparent via-red-900 to-transparent opacity-30 z-0" />
           <div className="absolute right-[2%] h-[150%] w-[1px] bg-gradient-to-b from-transparent via-red-900 to-transparent opacity-30 z-0" />
@@ -156,7 +154,7 @@ function App() {
           <motion.img
             src="/skull.png"
             alt="Cursed Skull"
-            className="mb-8 w-56 md:w-80 object-contain drop-shadow-[0_0_30px_rgba(185,28,28,0.8)] relative z-10"
+            className="mb-8 w-56 md:w-80 object-contain drop-shadow-[0_0_30px_rgba(185,28,28,0.8)] relative z-10 will-change-transform"
             animate={{
               y: [0, -20, 0]
             }}
