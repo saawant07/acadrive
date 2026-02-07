@@ -6,7 +6,7 @@ import { ResourceCard } from './components/ResourceCard';
 import { ResourceModal } from './components/ResourceModal';
 import { UploadModal } from './components/UploadModal';
 import { supabase } from './lib/supabase';
-import { Loader2, Database, User, Upload, Skull } from 'lucide-react';
+import { Loader2, Database, User, Upload, Skull, HelpCircle } from 'lucide-react';
 import { getUserId } from './lib/identity';
 import { Button } from './components/ui/Button';
 
@@ -15,6 +15,7 @@ import CustomCursor from './components/CustomCursor';
 import { BloodRain } from './components/BloodRain';
 import { ArcaneRunes } from './components/ArcaneRunes';
 import { HangingChains } from './components/HangingChains';
+import { RequestResourceModal } from './components/RequestResourceModal';
 
 function App() {
   const [resources, setResources] = useState([]);
@@ -25,6 +26,7 @@ function App() {
 
   const [viewResource, setViewResource] = useState(null);
   const [isUploadOpen, setIsUploadOpen] = useState(false);
+  const [isRequestOpen, setIsRequestOpen] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -178,11 +180,19 @@ function App() {
             <span className="">Study the Souls of the Passed.</span>
           </h2>
 
-          <div className="mt-10 flex justify-center relative z-50">
+          <div className="mt-10 flex flex-wrap justify-center gap-4 relative z-50">
             <Button onClick={() => setIsUploadOpen(true)} className="px-10 py-5 text-xl font-bold bg-black/80 backdrop-blur-md border-2 border-[#ff0000] shadow-[0_0_20px_rgba(255,0,0,0.6)] hover:bg-[#e11d48] hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] hover:scale-105 transition-all duration-300 text-white rounded-xl group relative overflow-hidden">
               <Upload className="mr-3 h-6 w-6 text-white group-hover:scale-110 transition-transform" />
               Upload Resource
             </Button>
+            {/* Ghost Button - Request Resource */}
+            <button
+              onClick={() => setIsRequestOpen(true)}
+              className="px-8 py-5 text-xl font-bold bg-transparent backdrop-blur-sm border-2 border-red-700/60 text-red-400 rounded-xl hover:bg-red-900/20 hover:border-red-500 hover:text-red-300 transition-all duration-300 flex items-center gap-3"
+            >
+              <HelpCircle className="h-6 w-6" />
+              Request Resource
+            </button>
           </div>
 
           <div className="max-w-4xl w-full mx-auto mt-12 flex flex-col gap-4 relative z-20">
@@ -258,6 +268,11 @@ function App() {
         isOpen={isUploadOpen}
         onClose={() => setIsUploadOpen(false)}
         onUploadSuccess={fetchResources}
+      />
+
+      <RequestResourceModal
+        isOpen={isRequestOpen}
+        onClose={() => setIsRequestOpen(false)}
       />
     </Layout>
   );
