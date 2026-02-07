@@ -143,8 +143,12 @@ function App() {
           <ArcaneRunes />
           <HangingChains />
 
+          {/* Crimson Threads */}
+          <div className="absolute left-[10%] h-full w-[1px] bg-gradient-to-b from-transparent via-red-900 to-transparent opacity-30 pointer-events-none z-0" />
+          <div className="absolute right-[10%] h-full w-[1px] bg-gradient-to-b from-transparent via-red-900 to-transparent opacity-30 pointer-events-none z-0" />
+
           {/* Vignette Overlay */}
-          <div className="absolute inset-0 pointer-events-none z-20 bg-gradient-to-r from-black via-transparent to-black opacity-80" />
+          <div className="absolute inset-0 pointer-events-none z-20 bg-gradient-to-r from-black/80 via-transparent to-black/80" />
 
           {/* Blood Rain Background - Restricted to this container */}
           <BloodRain className="opacity-80" />
