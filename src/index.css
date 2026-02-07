@@ -409,4 +409,23 @@ body {
   word-wrap: break-word;
 }
 
+/* Prevents 'SKULLDRIV' truncation */
+.main-title {
+  font-size: clamp(2.5rem, 12vw, 6rem) !important;
+  /* Dynamically resizes based on screen */
+  text-align: center;
+  width: 100%;
+  display: block;
+  letter-spacing: -0.05em;
+  /* Pulls letters in on small screens */
+}
+
+/* Force-wraps the slogan so it doesn't expand the page */
+.main-slogan {
+  width: 90%;
+  margin: 0 auto;
+  word-wrap: break-word;
+  font-size: 1rem !important;
+}
+
 /* Clean end of file */
