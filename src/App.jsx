@@ -233,8 +233,8 @@ function App() {
             <Skull size={80} className="text-red-600" />
           </motion.div>
 
-          <h1 className="text-7xl md:text-9xl font-heading font-black text-white tracking-widest uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-4" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
-            Acadrive
+          <h1 className="text-7xl md:text-9xl font-heading font-black text-white tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(225,29,72,0.8)] mb-4" style={{ fontFamily: '"Grenze Gotisch", cursive' }}>
+            Skulldrive
           </h1>
 
           <h2 className="text-4xl md:text-6xl font-heading font-normal text-white tracking-wide text-balance drop-shadow-[0_0_15px_rgba(225,29,72,0.8)]">

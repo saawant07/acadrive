@@ -1,6 +1,6 @@
-# Acadrive
+# Skulldrive
 
-Acadrive is a college-focused anonymous academic resource sharing platform.
+Skulldrive is a college-focused anonymous academic resource sharing platform.
 
 ## Features
 - 📂 **Anonymous Uploads**: Share resources without creating an account.
