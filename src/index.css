@@ -207,13 +207,7 @@
   }
 
   /* Stable Search Bar */
-  /* Native High-Performance Cursor */
-  /* Force these styles on fine pointer devices */
-  @media (pointer: fine) {
-    * {
-      cursor: none !important;
-    }
-  }
+
 
   /* Clean up old overrides if any */
 
